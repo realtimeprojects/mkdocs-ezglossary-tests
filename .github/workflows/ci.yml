@@ -30,6 +30,7 @@ jobs:
 
     - name: run e2e tests
       run: |
+        pip3 install git+https://github.com/acre-bdd/acre-cli.git@alpha
         acre init
         acre run
 
