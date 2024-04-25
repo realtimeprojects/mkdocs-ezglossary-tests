@@ -1,3 +1,5 @@
+from playwright.sync_api import TimeoutError as pwTimeoutError
+
 from radish import then, world
 from yaxp import xpath
 
@@ -11,16 +13,15 @@ class Definition:
         self._section = section
         self._term = term
 
-    def exists(self):
+    def exists(self, timeout=1000):
         try:
-            self._locator.wait_for()
-        except Exception:
+            self._locator.wait_for(timeout=timeout)
+        except pwTimeoutError:
             return False
         return True
 
     @property
     def _locator(self):
-        # return world.page.get_by_role("link").filter(has_text=self._term)
         return world.page.locator(str(self._xpath))
 
     @property
@@ -39,6 +40,11 @@ def i_see_term(step, section, term):
     assert Definition(section, term).exists(), f"{section}:{term} definition not found"
 
 
+@then('I see no term definition {term:QuotedString} in section {section:QuotedString}')
+def i_see_no_term(step, section, term):
+    assert not Definition(section, term).exists(), f"{section}:{term} definition found"
+
+
 @then('the term definition {term:QuotedString} has description {description:QuotedString}')
 def term_has_description(step, term, description):
     if ":" in term:
@@ -49,4 +55,4 @@ def term_has_description(step, term, description):
     log.trace(f"Checking definition for {section}:{term}")
     defn = Definition(section, term)
     log.debug(f"--- {defn.description.text_content()}")
-    defn.description.filter(has_text=description)
+    defn.description.filter(has_text=description).wait_for()
