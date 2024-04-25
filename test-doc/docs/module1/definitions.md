@@ -12,3 +12,8 @@ section2:term1
 section2:term2
 :   Definition of term2 in section2
 
+defaultterm1
+:   Definition of defaultterm1
+
+defaultterm2
+:   Definition of defaultterm2
