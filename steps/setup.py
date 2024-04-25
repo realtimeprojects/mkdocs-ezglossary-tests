@@ -1,6 +1,7 @@
+import os
 import time
-import subprocess
 import signal
+import subprocess
 
 from radish import before, after, world
 
@@ -13,7 +14,9 @@ def start_server(features, marker):
     mkdocs_cmd = 'mkdocs serve'
     mkdocs_cmd += f" -a {settings.mkdocs.address}"
     log.trace(f"Starting mkdocs server [{mkdocs_cmd}]")
-    world.mkdocs = subprocess.Popen(mkdocs_cmd, shell=True, cwd="test-doc/")
+    mkdocs_cmd = 'ls ../.acre-env/bin/'
+    log.trace(f"PATH: {os.environ['PATH']}")
+    world.mkdocs = subprocess.Popen(mkdocs_cmd, cwd="test-doc/", shell=True)
     time.sleep(5)
     assert world.mkdocs.returncode is None, "process start failed"
 
