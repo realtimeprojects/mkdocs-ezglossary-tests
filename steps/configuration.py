@@ -24,8 +24,11 @@ def i_see_term(step, configitem, value):
 
     for element in tree[:-1]:
         log.trace(f"selector is: {json.dumps(selector, indent=4)}")
-    if value in ["true", "false"]:
-        value = bool(value)
+
+    _mapping = {"true": True,
+                "false": False}
+    if value in _mapping:
+        value = _mapping[value]
     selector[tree[-1]] = value
 
     with open("test-doc/mkdocs.yml", "w") as file:
