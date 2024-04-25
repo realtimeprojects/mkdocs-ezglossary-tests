@@ -1,4 +1,3 @@
-import time
 from radish import then, world
 from yaxp import xpath
 
@@ -13,9 +12,6 @@ class Definition:
         self._term = term
 
     def exists(self):
-        self._locator.highlight()
-        time.sleep(10)
-
         try:
             self._locator.wait_for()
         except Exception:
