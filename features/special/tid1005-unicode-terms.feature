@@ -1,5 +1,4 @@
 @release
-@definition
 @tid:1005
 Feature: Unicode characters in terms are supported
 	The plugin supports term definition which use

@@ -26,3 +26,17 @@ section3:✅
 
 section3:✅_hello
 :   Definition of hello_✅
+
+
+section4:term--abc def
+:   Definition of term--abc def
+
+section4:--abc def
+:   Definition of --abc def
+
+section4:abc def--
+:   Definition of abc def--
+
+section4:abc&amp;def
+:   Definition of abc&def
+
