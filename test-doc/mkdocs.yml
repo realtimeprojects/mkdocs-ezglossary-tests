@@ -1,0 +1,70 @@
+site_name: acre
+theme:
+  name: material
+  features:
+    navigation.path
+    navigation.tabs
+    - content.code.copy
+  palette:
+    primary: deep-orange
+    accent: deep-orange
+
+nav:
+  - test-documentation: index.md
+  - module1:
+    - module1/definition.md
+  - module2:
+    - module2/links.md
+  - module3:
+    - module3/summary.md
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/mastodon 
+      link: https://squidfunk.github.io/mkdocs-material/
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      separator: "-"
+  - attr_list
+  - def_list
+  - tables
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true   
+  - admonition
+  - pymdownx.details
+  - footnotes
+  - md_in_html
+
+plugins:
+  - ezglossary:
+      strict: false
+      list_definitions: true
+      list_references: true
+      inline_refs: none
+      tooltip: full
+      use_default: false
+      sections:
+        - setting
+        - term
+        - demo
+        - configuration
+      section_config:
+        - name: demo
+          inline_refs: short
+        - name: term
+          inline_refs: short
+      templates: docs/templates
+      markdown_links: true

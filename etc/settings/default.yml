@@ -1,0 +1,6 @@
+playwright:
+  browser:
+    headless: false
+testrun:
+  delays:
+    step: 3

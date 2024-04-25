@@ -1,0 +1,4 @@
+user:
+  name: john
+  lastname: doe
+  password: secret
