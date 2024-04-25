@@ -3,6 +3,6 @@ playwright:
     headless: false
 testrun:
   delays:
-    step: 3
+    step: 0
 mkdocs:
   address: localhost:8009
