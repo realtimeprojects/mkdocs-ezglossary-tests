@@ -1,10 +1,10 @@
 from radish import when
 
-from acre.lib import log
+from acre.lib import log, settings
 from acre.playwright import Browser
 
 
 @when('I load the {page:QuotedString} page')
 def i_load_page(step, page):
     log.trace(f"Loading page `{page}`")
-    Browser.open(f"http://localhost:8000/{page}/")
+    Browser.open(f"http://{settings.mkdocs.address}/{page}/")

@@ -4,14 +4,16 @@ import signal
 
 from radish import before, after, world
 
-from acre.lib import log
+from acre.lib import log, settings
 from acre.playwright import Browser
 
 
 @before.all
 def start_server(features, marker):
-    log.trace(f"Starting mkdocs server {marker}")
-    world.mkdocs = subprocess.Popen('mkdocs serve', shell=True, cwd="test-doc/")
+    mkdocs_cmd = 'mkdocs serve'
+    mkdocs_cmd += f" -a {settings.mkdocs.address}"
+    log.trace(f"Starting mkdocs server [{mkdocs_cmd}]")
+    world.mkdocs = subprocess.Popen(mkdocs_cmd, shell=True, cwd="test-doc/")
     time.sleep(5)
     assert world.mkdocs.returncode is None, "process start failed"
 

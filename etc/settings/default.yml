@@ -4,3 +4,5 @@ playwright:
 testrun:
   delays:
     step: 3
+mkdocs:
+  address: localhost:8009
