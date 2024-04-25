@@ -1,4 +1,3 @@
-import os
 import time
 import signal
 import subprocess
@@ -9,7 +8,7 @@ from acre.lib import log, settings
 from acre.playwright import Browser
 
 
-@before.all
+@before.all(order=10)
 def start_server(features, marker):
     mkdocs_cmd = 'mkdocs serve'
     mkdocs_cmd += f" -a {settings.mkdocs.address}"

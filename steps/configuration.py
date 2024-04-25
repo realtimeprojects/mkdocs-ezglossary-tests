@@ -7,7 +7,7 @@ from radish import given, before
 from acre.lib import log
 
 
-@before.all
+@before.all(order=5)
 def load_config(features, marker):
     shutil.copy("mkdocs.yml.in", "test-doc/mkdocs.yml")
 
