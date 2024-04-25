@@ -22,6 +22,7 @@ def start_server(features, marker):
 def stop_server(features, marker):
     log.trace("Stopping mkdocs server")
     world.mkdocs.send_signal(signal.SIGINT)
+    world.mkdocs.send_signal(signal.SIGINT)
     world.mkdocs.wait()
     rc = world.mkdocs.returncode
     assert rc == 0, f"mkdocs server existe with return code {rc}"
