@@ -9,6 +9,7 @@ Feature: Link to a term definition
         When I load the "module2/links1" page.
         Then the page title contains "Links"
 	Then I see a link to "term1" in section "section1"
+	Then the link to "term1" in section "section1" has title "Definition of term1"
 	Then I see a link to "term1" in section "section2"
 	Then I see a link to "term2" in section "section1"
 	Then I see a link to "term2" in section "section2"

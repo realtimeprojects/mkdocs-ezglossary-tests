@@ -3,11 +3,14 @@ from playwright.sync_api import TimeoutError as pwTimeoutError
 from radish import when, then, world
 from yaxp import xpath
 
+from acre.lib import log
+
 
 class Link:
-    def __init__(self, section, term):
+    def __init__(self, section, term, title=None):
         self._section = section
         self._term = term
+        self._title = title
 
     def exists(self, timeout=1000):
         try:
@@ -28,7 +31,10 @@ class Link:
 
     @property
     def _xpath(self):
-        return xpath.article.a(_=f"*{self._term}", name=f"{self._section}:{self._term}")
+        xp = xpath.article.a(_=f"*{self._term}", name=f"{self._section}:{self._term}")
+        if self._title:
+            xp = xp(title=self._title)
+        return xp
 
     @property
     def description(self):
@@ -43,3 +49,8 @@ def i_see_link(step, section, term):
 @when('I click the link for {term:QuotedString} in section {section:QuotedString}')
 def i_click_link(step, section, term):
     Link(section, term).click()
+
+
+@then("the link to {term:QuotedString} in section {section:QuotedString} has title {title:QuotedString}")
+def link_has_title(step, section, term, title):
+    Link(section, term, title).wait_for()
