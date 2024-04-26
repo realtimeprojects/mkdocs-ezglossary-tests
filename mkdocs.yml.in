@@ -12,11 +12,12 @@ theme:
 nav:
   - test-documentation: index.md
   - module1:
-    - module1/definition.md
+    - module1/definitions.md
   - module2:
-    - module2/links.md
+    - module2/links1.md
   - module3:
     - module3/summary.md
+    - module3/links2.md
 
 extra:
   generator: false
