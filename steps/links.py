@@ -1,6 +1,6 @@
 from playwright.sync_api import TimeoutError as pwTimeoutError
 
-from radish import then, world
+from radish import when, then, world
 from yaxp import xpath
 
 
@@ -19,6 +19,9 @@ class Link:
     def wait_for(self):
         return self._locator.wait_for()
 
+    def click(self):
+        self._locator.click()
+
     @property
     def _locator(self):
         return world.page.locator(str(self._xpath))
@@ -35,3 +38,8 @@ class Link:
 @then('I see a link to {term:QuotedString} in section {section:QuotedString}')
 def i_see_link(step, section, term):
     Link(section, term).wait_for()
+
+
+@when('I click the link for {term:QuotedString} in section {section:QuotedString}')
+def i_click_link(step, section, term):
+    Link(section, term).click()
