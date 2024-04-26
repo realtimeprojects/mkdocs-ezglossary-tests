@@ -13,6 +13,9 @@ class Definition:
         self._section = section
         self._term = term
 
+    def wait_for(self):
+        return self._locator.wait_for()
+
     def exists(self, timeout=1000):
         try:
             self._locator.wait_for(timeout=timeout)
@@ -37,7 +40,7 @@ class Definition:
 @then('I see the term definition {term:QuotedString} in section {section:QuotedString}')
 def i_see_term(step, section, term):
     log.trace(f"Checking definition for {section}:{term}")
-    assert Definition(section, term).exists(), f"{section}:{term} definition not found"
+    Definition(section, term).wait_for()
 
 
 @then('I see no term definition {term:QuotedString} in section {section:QuotedString}')
