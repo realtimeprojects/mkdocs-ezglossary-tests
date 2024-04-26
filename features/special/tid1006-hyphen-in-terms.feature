@@ -13,3 +13,7 @@ Feature: Hyphens in terms are supported
 	Then the term definition "section4:--abc def" has description "Definition of --abc def"
         Then I see the term definition "abc def--" in section "section4"
 	Then the term definition "section4:abc def--" has description "Definition of abc def--"
+
+        When I load the "module3/links2" page.
+	When I click the link for "--abc def" in section "section4"
+	Then the page title contains "Plain Definitions"
