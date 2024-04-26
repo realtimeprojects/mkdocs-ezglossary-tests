@@ -1,4 +1,6 @@
-# Definitions
+# Plain Definitions
+
+## Normal definitions
 
 section1:term1
 :   Definition of term1
@@ -18,15 +20,7 @@ defaultterm1
 defaultterm2
 :   Definition of defaultterm2
 
-section3:term_✅
-:   Definition of term_✅
-
-section3:✅
-:   Definition of ✅
-
-section3:✅_hello
-:   Definition of hello_✅
-
+## Hyphen definitions
 
 section4:term--abc def
 :   Definition of term--abc def

@@ -14,16 +14,16 @@ Feature: Link to a term definition
 	Then I see a link to "term2" in section "section2"
 
 	When I click the link for "term1" in section "section1"
-	Then the page title contains "Definitions"
+	Then the page title contains "Plain Definitions"
 
         When I load the "module2/links1" page.
 	When I click the link for "term2" in section "section1"
-	Then the page title contains "Definitions"
+	Then the page title contains "Plain Definitions"
 
         When I load the "module2/links1" page.
 	When I click the link for "term1" in section "section2"
-	Then the page title contains "Definitions"
+	Then the page title contains "Plain Definitions"
 
         When I load the "module2/links1" page.
 	When I click the link for "term2" in section "section2"
-	Then the page title contains "Definitions"
+	Then the page title contains "Plain Definitions"
