@@ -1,5 +1,5 @@
 mkdocs
 mkdocs-material
 pymdown-extensions
-mkdocs-ezglossary-plugin @ git+https://github.com/realtimeprojects/mkdocs-ezglossary.git@main
+mkdocs-ezglossary-plugin @ git+https://github.com/realtimeprojects/mkdocs-ezglossary.git@branches/1.7
 yaxp
