@@ -14,6 +14,7 @@ nav:
   - module1:
     - module1/definitions.md
     - module1/unicode_definitions.md
+    - module1/definitions2.md
   - module2:
     - module2/links1.md
   - module3:

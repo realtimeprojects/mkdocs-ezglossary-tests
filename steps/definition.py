@@ -2,6 +2,7 @@ from playwright.sync_api import TimeoutError as pwTimeoutError
 
 from radish import then, world
 from yaxp import xpath
+import html
 
 from acre.lib import log
 
@@ -30,7 +31,7 @@ class Definition:
     @property
     def _xpath(self):
         id = glossary.get_id(self._section, self._term, "defs", 0)
-        return xpath.article.dt().has(xpath.a(id=id, text=f"*{self._term}"))
+        return xpath.article.dt().has(xpath.a(id=id, text=f"*{html.unescape(self._term)}"))
 
     @property
     def description(self):

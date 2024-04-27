@@ -2,8 +2,7 @@ from playwright.sync_api import TimeoutError as pwTimeoutError
 
 from radish import when, then, world
 from yaxp import xpath
-
-from acre.lib import log
+import html
 
 
 class Link:
@@ -31,7 +30,7 @@ class Link:
 
     @property
     def _xpath(self):
-        xp = xpath.article.a(_=f"*{self._term}", name=f"{self._section}:{self._term}")
+        xp = xpath.article.a(_=f"*{html.unescape(self._term)}", name=f"{self._section}:{self._term}")
         if self._title:
             xp = xp(title=self._title)
         return xp
