@@ -3,4 +3,5 @@ mkdocs-material
 pymdown-extensions
 mkdocs-ezglossary-plugin @ git+https://github.com/realtimeprojects/mkdocs-ezglossary.git@branches/1.7
 acre-playwright @ git+https://github.com/acre-bdd/acre-playwright.git@main
+acre-steps @ git+https://github.com/acre-bdd/acre-steps.git@main
 yaxp>=1.0.1

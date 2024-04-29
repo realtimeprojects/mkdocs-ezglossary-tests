@@ -1,10 +1,10 @@
 from radish import when, then
 import html
 
-from acre import controls
+from acre.playwright.controls import Link
 
 
-class TermLink(controls.Link):
+class TermLink(Link):
     def __init__(self, term, section=None, title=None):
         section = section if section else "_"
         super().__init__(text=html.unescape(term), name=f"{section}:{term}", title=title)

@@ -3,33 +3,29 @@ from yaxp import xpath
 import html
 
 from acre.lib import log
-from acre import controls
+from acre.controls import factory
 
 from mkdocs_ezglossary_plugin import glossary
 
 
-class TermDefinition(controls.Control):
+class TermDefinition(factory.getclass('XPControl')):
     def __init__(self, term, section=None, parent=None):
         super().__init__(parent)
         self._section = section if section else "_"
         self._term = term
 
     @property
-    def locator(self):
-        return self.parent.locator(str(self._xpath))
-
-    @property
-    def _xpath(self):
+    def xpath(self):
         id = glossary.get_id(self._section, self._term, "defs", 0)
         return xpath.article.dt().has(xpath.a(id=id, text=f"*{html.unescape(self._term)}"))
 
     @property
     def description(self):
-        return world.page.locator(str(xpath.dd.following(self._xpath))).first
+        return world.page.locator(str(xpath.dd.following(self.xpath))).first
 
 
 @then('I see the term definition {term:QuotedString} in section {section:QuotedString}')
-def i_see_term(step, section, term):
+def i_see_term_definition(step, section, term):
     log.trace(f"Checking definition for {section}:{term}")
     TermDefinition(term, section).wait_for()
 
